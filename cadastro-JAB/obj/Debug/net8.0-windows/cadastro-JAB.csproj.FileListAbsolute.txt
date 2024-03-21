@@ -63,3 +63,4 @@ C:\Users\gabri\OneDrive\Documentos\C#\Projetos\cadastro-JAB\cadastro-JAB\bin\Deb
 C:\Users\gabri\OneDrive\Documentos\C#\Projetos\cadastro-JAB\cadastro-JAB\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\gabri\OneDrive\Documentos\C#\Projetos\cadastro-JAB\cadastro-JAB\obj\Debug\net8.0-windows\cadastro-JAB.csproj.AssemblyReference.cache
 C:\Users\gabri\OneDrive\Documentos\C#\Projetos\cadastro-JAB\cadastro-JAB\obj\Debug\net8.0-windows\cadastro-JAB.csproj.CopyComplete
+C:\Users\gabri\OneDrive\Documentos\C#\Projetos\cadastro-JAB\cadastro-JAB\obj\Debug\net8.0-windows\cadastro-JAB.sourcelink.json

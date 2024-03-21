@@ -1,6 +1,6 @@
 ﻿namespace cadastro_JAB
 {
-    partial class Form1
+    partial class Cadastro
     {
         /// <summary>
         ///  Required designer variable.
@@ -36,7 +36,6 @@
             label4 = new Label();
             txtEndereco = new TextBox();
             label5 = new Label();
-            txtTelefone = new TextBox();
             label6 = new Label();
             txtEmail = new TextBox();
             label7 = new Label();
@@ -46,6 +45,7 @@
             confirma_cad = new Button();
             limpa_cad = new Button();
             pickerNascimento = new DateTimePicker();
+            txtTel = new MaskedTextBox();
             SuspendLayout();
             // 
             // label1
@@ -146,19 +146,6 @@
             label5.TabIndex = 7;
             label5.Text = "Telefone";
             label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtTelefone
-            // 
-            txtTelefone.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefone.BackColor = SystemColors.Control;
-            txtTelefone.BorderStyle = BorderStyle.FixedSingle;
-            txtTelefone.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTelefone.Location = new Point(251, 306);
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(310, 28);
-            txtTelefone.TabIndex = 8;
-            txtTelefone.TextAlign = HorizontalAlignment.Center;
-            txtTelefone.TextChanged += telefone_TextChanged;
             // 
             // label6
             // 
@@ -275,12 +262,29 @@
             pickerNascimento.TabIndex = 19;
             pickerNascimento.Value = new DateTime(2006, 12, 31, 0, 0, 0, 0);
             // 
-            // Form1
+            // txtTel
+            // 
+            txtTel.Anchor = AnchorStyles.None;
+            txtTel.BackColor = SystemColors.Control;
+            txtTel.BorderStyle = BorderStyle.FixedSingle;
+            txtTel.CutCopyMaskFormat = MaskFormat.IncludePrompt;
+            txtTel.Font = new Font("Verdana", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTel.ImeMode = ImeMode.NoControl;
+            txtTel.InsertKeyMode = InsertKeyMode.Overwrite;
+            txtTel.Location = new Point(251, 305);
+            txtTel.Mask = "(00) 00000-0000";
+            txtTel.Name = "txtTel";
+            txtTel.Size = new Size(172, 29);
+            txtTel.TabIndex = 20;
+            txtTel.ValidatingType = typeof(int);
+            // 
+            // Cadastro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1125, 552);
+            Controls.Add(txtTel);
             Controls.Add(pickerNascimento);
             Controls.Add(limpa_cad);
             Controls.Add(confirma_cad);
@@ -290,7 +294,6 @@
             Controls.Add(label7);
             Controls.Add(txtEmail);
             Controls.Add(label6);
-            Controls.Add(txtTelefone);
             Controls.Add(label5);
             Controls.Add(txtEndereco);
             Controls.Add(label4);
@@ -301,7 +304,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "Cadastro";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();
@@ -316,7 +319,6 @@
         private Label label4;
         private TextBox txtEndereco;
         private Label label5;
-        private TextBox txtTelefone;
         private Label label6;
         private TextBox txtEmail;
         private Label label7;
@@ -327,5 +329,6 @@
         private Button limpa_cad;
         private DateTimePicker pickerNascimento;
         public TextBox txtNome;
+        private MaskedTextBox txtTel;
     }
 }

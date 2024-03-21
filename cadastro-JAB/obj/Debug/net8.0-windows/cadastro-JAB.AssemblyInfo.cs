@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cadastro-JAB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74d0d56b23e2885c4e30f82de6f260c16ad09cbf")]
 [assembly: System.Reflection.AssemblyProductAttribute("cadastro-JAB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cadastro-JAB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace cadastro_JAB
 {
-    public partial class Form1 : Form
+    public partial class Cadastro : Form
     {
-        public Form1()
+        public Cadastro()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace cadastro_JAB
             string nome = txtNome.Text;
             string cpf = txtCpf.Text;
             string endereco = txtEndereco.Text;
-            string telefone = txtTelefone.Text;
+            string telefone = txtTel.Text;
             string email = txtEmail.Text;
             DateTime nascimento = pickerNascimento.Value;
             char sexo = ' ';
@@ -38,7 +38,7 @@ namespace cadastro_JAB
                 sexo = 'M';
             }
 
-            if (VerificaNome(nome) && VerificaCpf(cpf) && VerificaTel(telefone))
+            if (VerificaNome(nome) && VerificaCpf(cpf) && VerificaTel(telefone) && VerificaSexo())
             {
 
                 sqlCon = new SqlConnection(strCon);
@@ -62,6 +62,7 @@ namespace cadastro_JAB
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Dados inseridos com sucesso!");
+                            limpar();
                         }
                         else
                         {
@@ -70,6 +71,7 @@ namespace cadastro_JAB
                     }
                 }
             }
+            
         }
 
         private void limpar()
@@ -104,7 +106,7 @@ namespace cadastro_JAB
 
         public bool VerificaNome(string nome)
         {
-            Regex regex = new Regex("^[a-zA-Z]+$");
+            Regex regex = new Regex("^[a-zA-Z ]+$");
 
             if (regex.IsMatch(nome))
             {
@@ -120,36 +122,64 @@ namespace cadastro_JAB
 
         public bool VerificaCpf(string cpf)
         {
-            Regex regex = new Regex("^[0-9]+$");
+            
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
 
-            if (regex.IsMatch(cpf))
-            {
-                return true;
-            }
-            else
+            
+            if (cpf.Length != 11)
             {
                 MessageBox.Show("CPF inválido");
                 txtCpf.Clear();
                 return false;
             }
+
+          
+            int soma = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * (10 - i);
+            }
+            int primeiroDigitoVerificador = 11 - (soma % 11);
+            if (primeiroDigitoVerificador >= 10)
+            {
+                primeiroDigitoVerificador = 0;
+            }
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                soma += int.Parse(cpf[i].ToString()) * (11 - i);
+            }
+            int segundoDigitoVerificador = 11 - (soma % 11);
+            if (segundoDigitoVerificador >= 10)
+            {
+                segundoDigitoVerificador = 0;
+            }
+
+            
+            if (int.Parse(cpf[9].ToString()) != primeiroDigitoVerificador || int.Parse(cpf[10].ToString()) != segundoDigitoVerificador)
+            {
+                MessageBox.Show("CPF inválido");
+                txtCpf.Clear();
+                return false;
+            }
+
+            return true;
         }
 
         public bool VerificaTel(string tel)
         {
-            
-            Regex regex = new Regex("^[0-9]+$");
-
-            if (regex.IsMatch(tel))
+            if (tel.Length == 10)
             {
                 return true;
             }
             else
             {
-                MessageBox.Show("Telefone inválido");
-                txtTelefone.Clear();
+                MessageBox.Show("Telefone inválido. Deve conter 10 dígitos.");
                 return false;
             }
         }
+
 
         private void boxM_CheckedChanged(object sender, EventArgs e)
         {
@@ -165,6 +195,16 @@ namespace cadastro_JAB
             {
                 boxM.Checked = false;
             }
+        }
+
+        private bool VerificaSexo()
+        {
+            if(!boxF.Checked && !boxM.Checked)
+            {
+                MessageBox.Show("A opção de escolha de sexo é obrigatória! Por favor marcar uma!");
+                return false;
+            }
+            else { return true; }
         }
     }
 }
